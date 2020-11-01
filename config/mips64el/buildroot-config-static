@@ -10,6 +10,7 @@ BR2_HOST_GCC_AT_LEAST_5=y
 # Target options
 #
 BR2_ARCH_IS_64=y
+BR2_SOFT_FLOAT=y
 BR2_ARCH_HAS_MMU_MANDATORY=y
 # BR2_arcle is not set
 # BR2_arceb is not set
@@ -25,7 +26,7 @@ BR2_ARCH_HAS_MMU_MANDATORY=y
 # BR2_mips is not set
 # BR2_mipsel is not set
 # BR2_mips64 is not set
-# BR2_mips64el is not set
+BR2_mips64el=y
 # BR2_nds32 is not set
 # BR2_nios2 is not set
 # BR2_or1k is not set
@@ -36,32 +37,34 @@ BR2_ARCH_HAS_MMU_MANDATORY=y
 # BR2_sh is not set
 # BR2_sparc is not set
 # BR2_sparc64 is not set
-BR2_x86_64=y
+# BR2_x86_64 is not set
 # BR2_xtensa is not set
 BR2_ARCH_HAS_TOOLCHAIN_BUILDROOT=y
-BR2_ARCH="x86_64"
+BR2_ARCH_NEEDS_GCC_AT_LEAST_4_8=y
+BR2_ARCH_NEEDS_GCC_AT_LEAST_4_9=y
+BR2_ARCH_NEEDS_GCC_AT_LEAST_5=y
+BR2_ARCH="mips64el"
 BR2_ENDIAN="LITTLE"
-BR2_GCC_TARGET_ARCH="nocona"
+BR2_GCC_TARGET_ARCH="mips64r6"
+BR2_GCC_TARGET_ABI="64"
+BR2_GCC_TARGET_NAN="2008"
 BR2_BINFMT_SUPPORTS_SHARED=y
-BR2_READELF_ARCH_NAME="Advanced Micro Devices X86-64"
+BR2_READELF_ARCH_NAME="MIPS R3000"
 BR2_BINFMT_ELF=y
-BR2_X86_CPU_HAS_MMX=y
-BR2_X86_CPU_HAS_SSE=y
-BR2_X86_CPU_HAS_SSE2=y
-BR2_X86_CPU_HAS_SSE3=y
-BR2_x86_nocona=y
-# BR2_x86_core2 is not set
-# BR2_x86_corei7 is not set
-# BR2_x86_westmere is not set
-# BR2_x86_corei7_avx is not set
-# BR2_x86_core_avx2 is not set
-# BR2_x86_atom is not set
-# BR2_x86_silvermont is not set
-# BR2_x86_opteron is not set
-# BR2_x86_opteron_sse3 is not set
-# BR2_x86_barcelona is not set
-# BR2_x86_jaguar is not set
-# BR2_x86_steamroller is not set
+BR2_MIPS_CPU_MIPS64R6=y
+# BR2_mips_64 is not set
+# BR2_mips_64r2 is not set
+# BR2_mips_64r3 is not set
+# BR2_mips_64r5 is not set
+BR2_mips_64r6=y
+# BR2_mips_i6400 is not set
+# BR2_mips_octeon2 is not set
+# BR2_mips_octeon3 is not set
+# BR2_mips_p6600 is not set
+# BR2_MIPS_NABI32 is not set
+BR2_MIPS_NABI64=y
+BR2_MIPS_SOFT_FLOAT=y
+BR2_MIPS_NAN_2008=y
 
 #
 # Build options

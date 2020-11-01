@@ -6,24 +6,13 @@ cd $(dirname $0)/..
 ./scripts/ci 2>&1 | tee build.log
 mv build.log dist/build_${ARCH}.log
 
-GIT_TAG=$(git tag -l --contains HEAD | head -n 1)
-if [ -n "$(git status --porcelain --untracked-files=no)" ]; then
-    DIRTY="-dirty"
-fi
-
-if [ -z "$VERSION" ]; then
-    if [[ -z "$DIRTY" && -n "$GIT_TAG" ]]; then
-        VERSION=$GIT_TAG
-    else
-        VERSION="${COMMIT}${DIRTY}"
-    fi
-fi
-
-
 echo
 echo "to publish release to github, run dist/publish.sh"
 
 echo "#!/bin/sh"> dist/publish.sh
-echo "hub release edit -m ${VERSION} -a ./dist/artifacts/os-initrd-base-${ARCH}.tar.gz ${VERSION}" >> dist/publish.sh
+if [ "${ARCH}" == "amd64" ]; then
+    echo "github-release release --user burmilla --repo os-initrd-base --tag "${RELEASE_VERSION}" --pre-release" >> dist/publish.sh
+fi
+echo "github-release upload  --user burmilla --repo os-initrd-base --tag "${RELEASE_VERSION}" --file ./dist/artifacts/os-initrd-base-${ARCH}.tar.gz --name os-initrd-base-${ARCH}.tar.gz" >> dist/publish.sh
 
 chmod 755 dist/publish.sh

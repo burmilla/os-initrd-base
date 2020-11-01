@@ -40,6 +40,7 @@ busybox_install()
 
     if [ "$build" == "config" ]; then
         make busybox-menuconfig
+        cp output/build/busybox-*/.config ${DIST}/artifacts/$(basename $bbconf)
         cp output/build/busybox-*/.config ${target}.$(basename $bbconf)
     fi
 
