@@ -5,7 +5,7 @@
 `make`
 
 ## License
-Copyright (c) 2020 Project Burmilla
+Copyright (c) 2020-2021 Project Burmilla
 
 Copyright (c) 2014-2020 [Rancher Labs, Inc.](http://rancher.com)
 
