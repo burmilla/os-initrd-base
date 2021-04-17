@@ -9,7 +9,7 @@ on:
         required: true
       version:
         description: 'Version'
-        default: 'v2020.02.8-?'
+        default: 'v2021.02.1-?'
         required: true
 
 jobs:

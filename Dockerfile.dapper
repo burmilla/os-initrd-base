@@ -1,7 +1,7 @@
-FROM ubuntu:xenial
+FROM ubuntu:focal
 
 RUN apt-get update && \
-    apt-get install -y build-essential wget libncurses5-dev unzip bc curl python rsync ccache vim less cpio texinfo locales git
+    DEBIAN_FRONTEND=noninteractive apt-get install -y build-essential gcc-10 wget libncurses5-dev unzip bc curl python rsync ccache vim less cpio texinfo locales git
 
 RUN locale-gen en_US.UTF-8
 ENV LANG en_US.UTF-8
@@ -12,7 +12,7 @@ ENV SHELL /bin/bash
 ENV ARTIFACTS /usr/src
 WORKDIR ${DAPPER_SOURCE}
 
-ENV BUILDROOT_VERSION 2020.02.11
+ENV BUILDROOT_VERSION 2021.02.1
 ENV TARBALL ${BUILDROOT_VERSION}.tar.gz
 RUN cd ${ARTIFACTS} && \
     wget https://github.com/buildroot/buildroot/archive/$TARBALL
