@@ -561,7 +561,7 @@ BR2_PACKAGE_PULSEAUDIO_HAS_ATOMIC=y
 #
 BR2_PACKAGE_XZ=y
 # BR2_PACKAGE_ZIP is not set
-# BR2_PACKAGE_ZSTD is not set
+BR2_PACKAGE_ZSTD=y
 
 #
 # Debugging, profiling and benchmark
