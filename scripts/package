@@ -17,6 +17,7 @@ cp ../../assets/ca-certificates.crt usr/etc/ssl/certs/
 cp $BASE/bin/busybox usr/bin
 cp $BASE/usr/sbin/xtables-legacy-multi usr/bin/iptables
 cp $BASE/usr/bin/xz usr/bin/xz
+cp $BASE/usr/bin/zstd usr/bin/zstd
 
 ln -s busybox usr/bin/ps
 ln -s busybox usr/bin/modprobe
