@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Buildroot -g2b49a97-dirty Configuration
+# Buildroot -g3a79572-dirty Configuration
 #
 BR2_HAVE_DOT_CONFIG=y
 BR2_HOST_GCC_AT_LEAST_4_9=y
@@ -179,7 +179,7 @@ BR2_KERNEL_HEADERS_4_14=y
 # BR2_KERNEL_HEADERS_VERSION is not set
 # BR2_KERNEL_HEADERS_CUSTOM_TARBALL is not set
 # BR2_KERNEL_HEADERS_CUSTOM_GIT is not set
-BR2_DEFAULT_KERNEL_HEADERS="4.14.232"
+BR2_DEFAULT_KERNEL_HEADERS="4.14.236"
 BR2_PACKAGE_LINUX_HEADERS=y
 
 #
@@ -1853,7 +1853,7 @@ BR2_PACKAGE_MONGODB_ARCH_SUPPORTS=y
 #
 
 #
-# assimp needs a toolchain w/ C++, wchar
+# assimp needs libzlib
 #
 
 #
@@ -4092,7 +4092,7 @@ BR2_PACKAGE_AUDIT_ARCH_SUPPORTS=y
 # BR2_PACKAGE_EARLYOOM is not set
 
 #
-# efibootmgr needs a glibc or uClibc toolchain w/ dynamic library, headers >= 3.12, gcc >= 4.9
+# efibootmgr needs a toolchain w/ dynamic library, headers >= 3.12, gcc >= 4.9
 #
 BR2_PACKAGE_EFIVAR_ARCH_SUPPORTS=y
 
