@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Buildroot -g3a79572-dirty Configuration
+# Buildroot -g65b4957-dirty Configuration
 #
 BR2_HAVE_DOT_CONFIG=y
 BR2_HOST_GCC_AT_LEAST_4_9=y
@@ -134,6 +134,7 @@ BR2_COMPILER_PARANOID_UNSAFE_PATH=y
 #
 # Security Hardening Options
 #
+BR2_PIC_PIE_ARCH_SUPPORTS=y
 
 #
 # Stack Smashing Protection needs a toolchain w/ SSP
@@ -142,6 +143,7 @@ BR2_COMPILER_PARANOID_UNSAFE_PATH=y
 #
 # RELocation Read Only (RELRO) needs shared libraries
 #
+BR2_FORTIFY_SOURCE_ARCH_SUPPORTS=y
 
 #
 # Fortify Source needs a glibc toolchain and optimization
@@ -179,7 +181,7 @@ BR2_KERNEL_HEADERS_4_14=y
 # BR2_KERNEL_HEADERS_VERSION is not set
 # BR2_KERNEL_HEADERS_CUSTOM_TARBALL is not set
 # BR2_KERNEL_HEADERS_CUSTOM_GIT is not set
-BR2_DEFAULT_KERNEL_HEADERS="4.14.236"
+BR2_DEFAULT_KERNEL_HEADERS="4.14.246"
 BR2_PACKAGE_LINUX_HEADERS=y
 
 #
@@ -2624,7 +2626,7 @@ BR2_PACKAGE_CANFESTIVAL_ARCH_SUPPORTS=y
 # BR2_PACKAGE_LIBMODBUS is not set
 
 #
-# libmodsecurity needs a toolchain w/ C++, dynamic library, threads
+# libmodsecurity needs a toolchain w/ C++, threads
 #
 
 #
@@ -4413,6 +4415,7 @@ BR2_PACKAGE_PROVIDES_HOST_RUSTC="host-rust-bin"
 #
 # Legacy options removed in 2021.02
 #
+# BR2_PACKAGE_GNURADIO_PAGER is not set
 # BR2_PACKAGE_SCONESERVER_HTTP_SCONESITE_IMAGE is not set
 # BR2_PACKAGE_XSERVER_XORG_SERVER_KDRIVE_EVDEV is not set
 # BR2_PACKAGE_XSERVER_XORG_SERVER_KDRIVE_KBD is not set
