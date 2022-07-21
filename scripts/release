@@ -12,6 +12,8 @@ echo "to publish release to github, run dist/publish.sh"
 echo "#!/bin/sh"> dist/publish.sh
 if [ "${ARCH}" == "amd64" ]; then
     echo "github-release release --user burmilla --repo os-initrd-base --tag "${RELEASE_VERSION}" --pre-release" >> dist/publish.sh
+    echo "echo Waiting 30 seconds after release creation to make sure that GitHub is ready for uploads" >> dist/publish.sh
+    echo "sleep 30s" >> dist/publish.sh
 fi
 echo "github-release upload  --user burmilla --repo os-initrd-base --tag "${RELEASE_VERSION}" --file ./dist/artifacts/os-initrd-base-${ARCH}.tar.gz --name os-initrd-base-${ARCH}.tar.gz" >> dist/publish.sh
 
