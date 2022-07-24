@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Buildroot -gee2df1d-dirty Configuration
+# Buildroot 2022.02.3 Configuration
 #
 BR2_HAVE_DOT_CONFIG=y
 BR2_HOST_GCC_AT_LEAST_4_9=y
@@ -71,7 +71,7 @@ BR2_x86_nocona=y
 # BR2_x86_broadwell is not set
 # BR2_x86_skylake is not set
 # BR2_x86_atom is not set
-# BR2_x86_bonnel is not set
+# BR2_x86_bonnell is not set
 # BR2_x86_silvermont is not set
 # BR2_x86_goldmont is not set
 # BR2_x86_goldmont_plus is not set
@@ -209,7 +209,7 @@ BR2_KERNEL_HEADERS_4_14=y
 # BR2_KERNEL_HEADERS_VERSION is not set
 # BR2_KERNEL_HEADERS_CUSTOM_TARBALL is not set
 # BR2_KERNEL_HEADERS_CUSTOM_GIT is not set
-BR2_DEFAULT_KERNEL_HEADERS="4.14.269"
+BR2_DEFAULT_KERNEL_HEADERS="4.14.282"
 BR2_PACKAGE_LINUX_HEADERS=y
 
 #
@@ -445,7 +445,7 @@ BR2_PACKAGE_FFMPEG_ARCH_SUPPORTS=y
 # BR2_PACKAGE_FLUID_SOUNDFONT is not set
 
 #
-# fluidsynth needs a toolchain w/ threads, wchar, dynamic library
+# fluidsynth needs a toolchain w/ threads, wchar, dynamic library, C++
 #
 
 #
@@ -601,6 +601,7 @@ BR2_PACKAGE_ZSTD=y
 #
 # bonnie++ needs a toolchain w/ C++
 #
+BR2_PACKAGE_BPFTOOL_ARCH_SUPPORTS=y
 
 #
 # bpftool needs a uClibc or glibc toolchain w/ wchar, dynamic library, threads, headers >= 4.12
@@ -765,7 +766,7 @@ BR2_PACKAGE_TCF_AGENT_ARCH_SUPPORTS=y
 # BR2_PACKAGE_TINYMEMBENCH is not set
 
 #
-# trace-cmd needs a toolchain w/ threads, dynamic library
+# trace-cmd needs a toolchain w/ NPTL, dynamic library
 #
 BR2_PACKAGE_TRINITY_ARCH_SUPPORTS=y
 # BR2_PACKAGE_TRINITY is not set
@@ -773,12 +774,12 @@ BR2_PACKAGE_TRINITY_ARCH_SUPPORTS=y
 BR2_PACKAGE_UFTRACE_ARCH_SUPPORTS=y
 
 #
-# uftrace needs a toolchain w/ threads, dynamic library
+# uftrace needs a toolchain w/ NPTL, dynamic library
 #
 BR2_PACKAGE_VALGRIND_ARCH_SUPPORTS=y
 
 #
-# valgrind needs a toolchain w/ dynamic library
+# valgrind needs a toolchain w/ dynamic library, threads
 #
 # BR2_PACKAGE_VMTOUCH is not set
 # BR2_PACKAGE_WHETSTONE is not set
@@ -1597,7 +1598,7 @@ BR2_PACKAGE_HOST_MONO_ARCH_SUPPORTS=y
 BR2_PACKAGE_MONO_ARCH_SUPPORTS=y
 
 #
-# mono needs a toolchain w/ C++, threads, dynamic library
+# mono needs a toolchain w/ C++, NPTL, dynamic library
 #
 BR2_PACKAGE_NODEJS_ARCH_SUPPORTS=y
 
@@ -1982,7 +1983,7 @@ BR2_PACKAGE_ROCKSDB_ARCH_SUPPORTS=y
 #
 
 #
-# assimp needs libzlib
+# assimp needs a toolchain w/ C++, wchar
 #
 
 #
@@ -2043,7 +2044,7 @@ BR2_PACKAGE_ROCKSDB_ARCH_SUPPORTS=y
 # BR2_PACKAGE_GIFLIB is not set
 
 #
-# granite needs libgtk3 and a toolchain w/ wchar, threads
+# granite needs libgtk3 and a toolchain w/ wchar, threads, gcc >= 4.9
 #
 
 #
@@ -2064,7 +2065,7 @@ BR2_PACKAGE_ROCKSDB_ARCH_SUPPORTS=y
 #
 
 #
-# intel-gmmlib needs a toolchain w/ dynamic library
+# intel-gmmlib needs a toolchain w/ dynamic library, C++
 #
 
 #
@@ -2194,7 +2195,7 @@ BR2_PACKAGE_JPEG_SIMD_SUPPORT=y
 #
 
 #
-# pipewire needs a toolchain w/ dynamic library, threads, gcc >= 5
+# pipewire needs a toolchain w/ dynamic library, NTPL, gcc >= 5
 #
 # BR2_PACKAGE_PIXMAN is not set
 
@@ -2470,7 +2471,7 @@ BR2_PACKAGE_MRAA_ARCH_SUPPORTS=y
 #
 
 #
-# valijson needs a toolchain w/ C++, threads, wchar  support
+# valijson needs a toolchain w/ C++
 #
 
 #
@@ -2937,7 +2938,7 @@ BR2_PACKAGE_LIBNL=y
 #
 
 #
-# qpid-proton needs a toolchain w/ dynamic library
+# qpid-proton needs a toolchain w/ C++, dynamic library, threads
 #
 
 #
@@ -3189,7 +3190,7 @@ BR2_PACKAGE_LIBEASTL_ARCH_SUPPORTS=y
 #
 
 #
-# libgee needs a toolchain w/ wchar, threads
+# libgee needs a toolchain w/ wchar, threads, gcc >= 4.9
 #
 
 #
@@ -3207,7 +3208,7 @@ BR2_PACKAGE_LIBEASTL_ARCH_SUPPORTS=y
 # BR2_PACKAGE_LIBITE is not set
 
 #
-# libks needs a toolchain w/ C++, threads, dynamic library
+# libks needs a toolchain w/ C++, NPTL, dynamic library
 #
 
 #
@@ -3559,7 +3560,7 @@ BR2_PACKAGE_QEMU_ARCH_SUPPORTS_TARGET=y
 #
 
 #
-# xmrig needs a glibc or musl toolchain w/ NPTL, dynamic library
+# xmrig needs a glibc or musl toolchain w/ NPTL, dynamic library, C++
 #
 # BR2_PACKAGE_XUTIL_UTIL_MACROS is not set
 
@@ -3595,7 +3596,10 @@ BR2_PACKAGE_QEMU_ARCH_SUPPORTS_TARGET=y
 #
 # bcusdk needs a toolchain w/ C++
 #
-# BR2_PACKAGE_BIND is not set
+
+#
+# bind needs a toolchain w/ NPTL, dynamic library
+#
 # BR2_PACKAGE_BIRD is not set
 
 #
@@ -4017,7 +4021,7 @@ BR2_PACKAGE_MONGREL2_LIBC_SUPPORTS=y
 # BR2_PACKAGE_SPAWN_FCGI is not set
 
 #
-# spice server needs a toolchain w/ wchar, threads
+# spice server needs a toolchain w/ wchar, threads, C++
 #
 # BR2_PACKAGE_SPICE_PROTOCOL is not set
 
@@ -4116,7 +4120,7 @@ BR2_PACKAGE_MONGREL2_LIBC_SUPPORTS=y
 # BR2_PACKAGE_WIRELESS_TOOLS is not set
 
 #
-# wireshark needs a toolchain w/ wchar, threads, dynamic library
+# wireshark needs a toolchain w/ wchar, threads, dynamic library, C++
 #
 # BR2_PACKAGE_WPA_SUPPLICANT is not set
 # BR2_PACKAGE_WPAN_TOOLS is not set
@@ -4606,6 +4610,7 @@ BR2_TARGET_GRUB2_ARCH_SUPPORTS=y
 # grub2 needs a toolchain w/ wchar
 #
 # BR2_TARGET_GUMMIBOOT is not set
+BR2_PACKAGE_SHIM_ARCH_SUPPORTS=y
 # BR2_TARGET_SHIM is not set
 # BR2_TARGET_SYSLINUX is not set
 # BR2_TARGET_UBOOT is not set
@@ -4714,6 +4719,9 @@ BR2_PACKAGE_PROVIDES_HOST_RUSTC="host-rust-bin"
 #
 # Legacy options removed in 2022.02
 #
+# BR2_sh2a is not set
+BR2_TARGET_ROOTFS_OCI_ENTRYPOINT_ARGS=""
+# BR2_PACKAGE_LIBCURL_LIBNSS is not set
 # BR2_PACKAGE_WESTON_DEFAULT_FBDEV is not set
 # BR2_PACKAGE_WESTON_FBDEV is not set
 # BR2_PACKAGE_PYTHON_PYCLI is not set
