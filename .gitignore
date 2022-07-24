@@ -6,3 +6,4 @@
 /trash.lock
 /Dockerfile.dapper*
 !/Dockerfile.dapper
+.vscode/*
