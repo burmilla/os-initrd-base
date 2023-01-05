@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Buildroot 2022.02.3 Configuration
+# Buildroot 2022.02.8 Configuration
 #
 BR2_HAVE_DOT_CONFIG=y
 BR2_HOST_GCC_AT_LEAST_4_9=y
@@ -209,8 +209,10 @@ BR2_KERNEL_HEADERS_5_10=y
 # BR2_KERNEL_HEADERS_VERSION is not set
 # BR2_KERNEL_HEADERS_CUSTOM_TARBALL is not set
 # BR2_KERNEL_HEADERS_CUSTOM_GIT is not set
-BR2_DEFAULT_KERNEL_HEADERS="5.10.120"
+BR2_DEFAULT_KERNEL_HEADERS="5.10.155"
 BR2_PACKAGE_LINUX_HEADERS=y
+BR2_PACKAGE_UCLIBC_ARCH_SUPPORTS=y
+BR2_PACKAGE_UCLIBC_SUPPORTS=y
 
 #
 # uClibc Options
@@ -243,9 +245,9 @@ BR2_BINUTILS_EXTRA_CONFIG_OPTIONS=""
 # GCC Options
 #
 # BR2_GCC_VERSION_9_X is not set
-BR2_GCC_VERSION_10_X=y
-# BR2_GCC_VERSION_11_X is not set
-BR2_GCC_VERSION="10.3.0"
+# BR2_GCC_VERSION_10_X is not set
+BR2_GCC_VERSION_11_X=y
+BR2_GCC_VERSION="11.3.0"
 BR2_EXTRA_GCC_CONFIG_OPTIONS=""
 # BR2_TOOLCHAIN_BUILDROOT_CXX is not set
 
@@ -340,7 +342,8 @@ BR2_TOOLCHAIN_GCC_AT_LEAST_7=y
 BR2_TOOLCHAIN_GCC_AT_LEAST_8=y
 BR2_TOOLCHAIN_GCC_AT_LEAST_9=y
 BR2_TOOLCHAIN_GCC_AT_LEAST_10=y
-BR2_TOOLCHAIN_GCC_AT_LEAST="10"
+BR2_TOOLCHAIN_GCC_AT_LEAST_11=y
+BR2_TOOLCHAIN_GCC_AT_LEAST="11"
 BR2_TOOLCHAIN_HAS_MNAN_OPTION=y
 BR2_TOOLCHAIN_HAS_SYNC_1=y
 BR2_TOOLCHAIN_HAS_SYNC_2=y
@@ -487,6 +490,10 @@ BR2_PACKAGE_KODI_ARCH_SUPPORTS=y
 #
 
 #
+# kodi needs udev support for gbm
+#
+
+#
 # kodi needs an OpenGL EGL backend with OpenGL or GLES support
 #
 # BR2_PACKAGE_LAME is not set
@@ -527,6 +534,10 @@ BR2_PACKAGE_MJPEGTOOLS_SIMD_SUPPORT=y
 # ncmpc needs a toolchain w/ C++, wchar, threads, gcc >= 7
 #
 # BR2_PACKAGE_OPUS_TOOLS is not set
+
+#
+# pipewire needs a toolchain w/ dynamic library, NTPL, gcc >= 5
+#
 BR2_PACKAGE_PULSEAUDIO_HAS_ATOMIC=y
 
 #
@@ -1067,7 +1078,7 @@ BR2_PACKAGE_PROVIDES_HOST_GETTEXT="host-gettext-tiny"
 #
 
 #
-# glslsandbox-player needs a toolchain w/ threads and an openGL ES and EGL driver
+# glslsandbox-player needs openGL ES and EGL driver
 #
 # BR2_PACKAGE_GNUPLOT is not set
 
@@ -1272,6 +1283,10 @@ BR2_PACKAGE_QT5_JSCORE_AVAILABLE=y
 
 #
 # cryptsetup needs a toolchain w/ threads, dynamic library
+#
+
+#
+# cwiid needs a toolchain w/ dynamic lib, threads, wchar, headers >= 3.18
 #
 
 #
@@ -1550,7 +1565,7 @@ BR2_PACKAGE_SEDUTIL_ARCH_SUPPORTS=y
 # BR2_PACKAGE_USB_MODESWITCH_DATA is not set
 
 #
-# usbguard needs a glibc or uClibc toolchain w/ C++, threads, dynamic library, gcc >= 4.8
+# usbguard needs a glibc or uClibc toolchain w/ C++, threads, dynamic library, gcc >= 8
 #
 
 #
@@ -2209,10 +2224,6 @@ BR2_PACKAGE_JPEG_SIMD_SUPPORT=y
 
 #
 # pangomm needs a toolchain w/ C++, wchar, threads, gcc >= 7
-#
-
-#
-# pipewire needs a toolchain w/ dynamic library, NTPL, gcc >= 5
 #
 # BR2_PACKAGE_PIXMAN is not set
 
@@ -3140,7 +3151,7 @@ BR2_PACKAGE_GOBJECT_INTROSPECTION_ARCH_SUPPORTS=y
 # BR2_PACKAGE_GSL is not set
 
 #
-# gtest needs a toolchain w/ C++, wchar, threads, gcc >= 4.9
+# gtest needs a toolchain w/ C++, wchar, threads, gcc >= 5
 #
 # BR2_PACKAGE_GUMBO_PARSER is not set
 BR2_PACKAGE_JEMALLOC_ARCH_SUPPORTS=y
@@ -3190,7 +3201,7 @@ BR2_PACKAGE_LIBBSD_ARCH_SUPPORTS=y
 BR2_PACKAGE_LIBEASTL_ARCH_SUPPORTS=y
 
 #
-# libeastl needs a toolchain w/ C++, gcc >= 4.9
+# libeastl needs a toolchain w/ C++, threads, gcc >= 4.9
 #
 # BR2_PACKAGE_LIBEE is not set
 # BR2_PACKAGE_LIBEV is not set
@@ -4458,6 +4469,7 @@ BR2_PACKAGE_MAKEDUMPFILE_ARCH_SUPPORTS=y
 #
 # nut needs a toolchain w/ C++
 #
+BR2_PACKAGE_OPENVMTOOLS_ARCH_SUPPORTS=y
 
 #
 # openvmtools needs a glibc or musl toolchain w/ wchar, threads, locale
@@ -4727,6 +4739,8 @@ BR2_PACKAGE_PROVIDES_HOST_RUSTC="host-rust-bin"
 #
 # Legacy options removed in 2022.02
 #
+# BR2_PACKAGE_LIBOPENSSL_ENABLE_RC5 is not set
+# BR2_PACKAGE_PHP_EXT_WDDX is not set
 # BR2_sh2a is not set
 BR2_TARGET_ROOTFS_OCI_ENTRYPOINT_ARGS=""
 # BR2_PACKAGE_LIBCURL_LIBNSS is not set
