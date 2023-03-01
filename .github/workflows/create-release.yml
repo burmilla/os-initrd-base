@@ -31,4 +31,4 @@ jobs:
     - name: Publish release
       run: ${PWD}/dist/publish.sh
       env:
-        GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.OS_RELEASE_TOKEN }}

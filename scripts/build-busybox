@@ -35,7 +35,11 @@ busybox_install()
         cp $bbconf package/busybox/
     fi
     export HOME=${BUILD}
-    make oldconfig
+    if [ "$build" == "config" ]; then
+        make menuconfig
+    else
+        make oldconfig
+    fi
     cp .config ${DIST}/artifacts/$(basename $conf)
 
     if [ "$build" == "config" ]; then
