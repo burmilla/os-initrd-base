@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Buildroot 2022.02.8 Configuration
+# Buildroot 2022.02.10 Configuration
 #
 BR2_HAVE_DOT_CONFIG=y
 BR2_HOST_GCC_AT_LEAST_4_9=y
@@ -209,7 +209,7 @@ BR2_KERNEL_HEADERS_5_10=y
 # BR2_KERNEL_HEADERS_VERSION is not set
 # BR2_KERNEL_HEADERS_CUSTOM_TARBALL is not set
 # BR2_KERNEL_HEADERS_CUSTOM_GIT is not set
-BR2_DEFAULT_KERNEL_HEADERS="5.10.155"
+BR2_DEFAULT_KERNEL_HEADERS="5.10.166"
 BR2_PACKAGE_LINUX_HEADERS=y
 BR2_PACKAGE_UCLIBC_ARCH_SUPPORTS=y
 BR2_PACKAGE_UCLIBC_SUPPORTS=y
@@ -3567,10 +3567,7 @@ BR2_PACKAGE_QEMU_ARCH_SUPPORTS_TARGET=y
 #
 # qpdf needs a toolchain w/ C++, gcc >= 5
 #
-
-#
-# rtl_433 needs a toolchain w/ dynamic library, threads
-#
+# BR2_PACKAGE_RTL_433 is not set
 
 #
 # shared-mime-info needs a toolchain w/ wchar, threads
@@ -4940,6 +4937,10 @@ BR2_PACKAGE_REFPOLICY_POLICY_VERSION=""
 # BR2_PACKAGE_PYTHON_SCAPY3K is not set
 # BR2_BINUTILS_VERSION_2_30_X is not set
 # BR2_PACKAGE_RPI_USERLAND_START_VCFILED is not set
+# BR2_PACKAGE_TI_SGX_KM_AM335X is not set
+# BR2_PACKAGE_TI_SGX_KM_AM437X is not set
+# BR2_PACKAGE_TI_SGX_KM_AM4430 is not set
+# BR2_PACKAGE_TI_SGX_KM_AM5430 is not set
 
 #
 # Legacy options removed in 2019.11
@@ -5096,6 +5097,7 @@ BR2_TOOLCHAIN_EXTRA_EXTERNAL_LIBS=""
 #
 # BR2_PACKAGE_MEDIAART_BACKEND_NONE is not set
 # BR2_PACKAGE_MEDIAART_BACKEND_GDK_PIXBUF is not set
+# BR2_PACKAGE_MEDIAART_BACKEND_QT is not set
 # BR2_PACKAGE_TI_SGX_AM335X is not set
 # BR2_PACKAGE_TI_SGX_AM437X is not set
 # BR2_PACKAGE_TI_SGX_AM4430 is not set

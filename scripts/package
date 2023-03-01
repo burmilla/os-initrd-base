@@ -25,4 +25,37 @@ ln -s busybox usr/bin/mount
 ln -s busybox usr/bin/echo
 ln -s busybox usr/bin/mkdir
 
+# for WSL2 support
+mkdir etc
+touch etc/fstab
+echo "root:x:0:0:root:/:/bin/sh" > etc/passwd
+cat << EOF > etc/profile
+echo "Waiting that console container is ready"
+until system-docker ps --filter name=console --format "{{.Names}}" 2> /dev/null | grep "console" > /dev/null
+do
+ sleep 5
+done
+system-docker exec -it -u rancher console bash
+exit 0
+EOF
+touch etc/resolv.conf
+cat << EOF > etc/wsl.conf
+[automount]
+enabled = true
+mountFsTab = false
+
+[interop]
+enabled = false
+appendWindowsPath = false
+
+[boot]
+command = "/usr/bin/env -i /usr/bin/unshare --pid --mount-proc --fork --propagation private -- sh -c 'exec /usr/bin/init 2> /dev/console 1> /dev/console'"
+EOF
+mkdir bin
+ln -s ../usr/bin/busybox bin/sh
+ln -s busybox usr/bin/env
+ln -s busybox usr/bin/grep
+ln -s busybox usr/bin/sleep
+ln -s busybox usr/bin/unshare
+
 tar cvzf ../../dist/artifacts/os-initrd-base-${1}.tar.gz .
