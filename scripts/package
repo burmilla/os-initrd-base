@@ -24,6 +24,7 @@ ln -s busybox usr/bin/modprobe
 ln -s busybox usr/bin/mount
 ln -s busybox usr/bin/echo
 ln -s busybox usr/bin/mkdir
+ln -s busybox usr/bin/chroot
 
 # for WSL2 support
 mkdir etc
