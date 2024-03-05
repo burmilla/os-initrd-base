@@ -27,7 +27,7 @@ Or just [click here](//github.com/burmilla/os/issues/new?title=%5Bos-initrd-base
 
 
 ## License
-Copyright (c) 2020-2023 BurmillaOS community
+Copyright (c) 2020-2024 [BurmillaOS community](https://burmillaos.org)
 
 Copyright (c) 2014-2020 [Rancher Labs, Inc.](http://rancher.com)
 

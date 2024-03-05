@@ -12,7 +12,7 @@ ENV SHELL /bin/bash
 ENV ARTIFACTS /usr/src
 WORKDIR ${DAPPER_SOURCE}
 
-ENV BUILDROOT_VERSION 2023.05
+ENV BUILDROOT_VERSION 2023.02.10
 ENV TARBALL ${BUILDROOT_VERSION}.tar.gz
 RUN cd ${ARTIFACTS} && \
     wget https://github.com/buildroot/buildroot/archive/$TARBALL
