@@ -1,7 +1,7 @@
-FROM ubuntu:focal
+FROM ubuntu:24.04
 
 RUN apt-get update && \
-    DEBIAN_FRONTEND=noninteractive apt-get install -y build-essential gcc-10 wget libncurses5-dev unzip bc curl python rsync ccache vim less cpio texinfo locales git
+    DEBIAN_FRONTEND=noninteractive apt-get install -y build-essential file wget libncurses5-dev unzip bc curl python3 rsync ccache vim less cpio texinfo locales git
 
 RUN locale-gen en_US.UTF-8
 ENV LANG en_US.UTF-8
@@ -12,7 +12,7 @@ ENV SHELL /bin/bash
 ENV ARTIFACTS /usr/src
 WORKDIR ${DAPPER_SOURCE}
 
-ENV BUILDROOT_VERSION 2023.02.10
+ENV BUILDROOT_VERSION 2025.02.16
 ENV TARBALL ${BUILDROOT_VERSION}.tar.gz
 RUN cd ${ARTIFACTS} && \
     wget https://github.com/buildroot/buildroot/archive/$TARBALL
@@ -24,6 +24,7 @@ ARG RELEASE_VERSION
 ENV RELEASE_VERSION=${RELEASE_VERSION}
 ENV ARCH=${ARCH}
 ENV HOST_ARCH=${HOST_ARCH}
+ENV FORCE_UNSAFE_CONFIGURE=1
 
 ENTRYPOINT ["./scripts/entry"]
 CMD ["ci"]

@@ -9,12 +9,12 @@ on:
         required: true
       version:
         description: 'Version'
-        default: 'v2023.05-?'
+        default: 'v2025.02.16-?'
         required: true
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
     - uses: actions/checkout@v2
 
