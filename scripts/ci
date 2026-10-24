@@ -12,6 +12,10 @@ echo "about to build ${ARCH}"
 mkdir -p ${DIST}/artifacts
 
 for arch in $ARCH; do
+  case ${arch} in
+    riscv64|loong64) export TARBALL=${BUILDROOT_VERSION_NEW_ARCHS}.tar.gz ;;
+    *) export TARBALL=${BUILDROOT_VERSION}.tar.gz ;;
+  esac
   ./scripts/build-busybox "build" ${CONFIG}/${arch}/buildroot-config-static ${CONFIG}/busybox-dynamic.config
   ./scripts/package ${arch}
 done
