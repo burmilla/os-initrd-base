@@ -1,7 +1,10 @@
 #!/bin/bash
+set -eo pipefail
 
 cd $(dirname $0)/..
 : ${ARTIFACTS:=$(pwd)/dist/artifacts}
+
+REPO=burmilla/os-initrd-base
 
 ./scripts/ci 2>&1 | tee build.log
 mv build.log dist/build_${ARCH}.log
@@ -9,12 +12,13 @@ mv build.log dist/build_${ARCH}.log
 echo
 echo "to publish release to github, run dist/publish.sh"
 
-echo "#!/bin/sh"> dist/publish.sh
-if [ "${ARCH}" == "amd64" ]; then
-    echo "github-release release --user burmilla --repo os-initrd-base --tag "${RELEASE_VERSION}" --pre-release" >> dist/publish.sh
-    echo "echo Waiting 30 seconds after release creation to make sure that GitHub is ready for uploads" >> dist/publish.sh
-    echo "sleep 30s" >> dist/publish.sh
-fi
-echo "github-release upload  --user burmilla --repo os-initrd-base --tag "${RELEASE_VERSION}" --file ./dist/artifacts/os-initrd-base-${ARCH}.tar.gz --name os-initrd-base-${ARCH}.tar.gz" >> dist/publish.sh
-
+echo "#!/bin/sh" > dist/publish.sh
+echo "set -e" >> dist/publish.sh
 chmod 755 dist/publish.sh
+
+# The amd64 build creates the pre-release, the other arches only attach their artifacts to it
+if [ "${ARCH}" = "amd64" ]; then
+    echo "gh release view ${RELEASE_VERSION} --repo ${REPO} >/dev/null 2>&1 || gh release create ${RELEASE_VERSION} --repo ${REPO} --target \${GITHUB_SHA:-master} --title ${RELEASE_VERSION} --notes '' --prerelease" >> dist/publish.sh
+fi
+echo "gh release upload ${RELEASE_VERSION} --repo ${REPO} --clobber ./dist/artifacts/os-initrd-base-${ARCH}.tar.gz" >> dist/publish.sh
+echo "gh release upload ${RELEASE_VERSION} --repo ${REPO} --clobber ./dist/build_${ARCH}.log" >> dist/publish.sh
