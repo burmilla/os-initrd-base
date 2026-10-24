@@ -1,34 +1,72 @@
 name: release
 
+# Builds all architectures: amd64 creates the GitHub pre-release, then arm64,
+# riscv64 and loong64 build in parallel and attach their artifacts to it.
+# With "release" unchecked nothing is published and the artifacts are attached
+# to the workflow run instead (for testing changes from a branch).
 on:
   workflow_dispatch:
     inputs:
-      arch:
-        description: 'Architecture'
-        default: 'amd64'
-        required: true
       version:
         description: 'Version'
         default: 'v2025.02.18-?'
         required: true
+      release:
+        description: 'Create GitHub release (amd64) and upload artifacts to it'
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
 
 jobs:
-  build:
+  amd64:
     runs-on: ubuntu-24.04
     steps:
-    - uses: actions/checkout@v2
-
-    - name: Install github-release
-      run: |
-        sudo wget https://github.com/github-release/github-release/releases/download/v0.9.0/linux-amd64-github-release.bz2 -O /usr/local/bin/github-release.bz2
-        sudo bunzip2 /usr/local/bin/github-release.bz2
-        sudo chmod 0755 /usr/local/bin/github-release
+    - uses: actions/checkout@v4
 
     - name: Build
-      run: |
-        ARCH=${{ github.event.inputs.arch }} RELEASE_VERSION=${{ github.event.inputs.version }} make release
+      run: ARCH=amd64 RELEASE_VERSION=${{ inputs.version }} make release
 
     - name: Publish release
-      run: ${PWD}/dist/publish.sh
+      if: ${{ inputs.release }}
+      run: ./dist/publish.sh
       env:
-        GITHUB_TOKEN: ${{ secrets.OS_RELEASE_TOKEN }}
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - uses: actions/upload-artifact@v4
+      if: ${{ !inputs.release }}
+      with:
+        name: os-initrd-base-amd64
+        path: |
+          dist/artifacts/*
+          dist/build_amd64.log
+
+  cross:
+    needs: amd64
+    # When not releasing there is nothing to wait for, so build even if amd64 failed
+    if: ${{ always() && (needs.amd64.result == 'success' || !inputs.release) }}
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        arch: [arm64, riscv64, loong64]
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Build
+      run: ARCH=${{ matrix.arch }} RELEASE_VERSION=${{ inputs.version }} make release
+
+    - name: Upload to release
+      if: ${{ inputs.release }}
+      run: ./dist/publish.sh
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - uses: actions/upload-artifact@v4
+      if: ${{ !inputs.release }}
+      with:
+        name: os-initrd-base-${{ matrix.arch }}
+        path: |
+          dist/artifacts/*
+          dist/build_${{ matrix.arch }}.log

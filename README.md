@@ -3,7 +3,8 @@ This repository is used to build initrd base for BurmillaOS.
 
 ## How to contribute
 - Fork this repository and create new branch based on master branch.
-- Check what is latest [buildroot LTS version](https://buildroot.org/download.html) and update BUILDROOT_VERSION value Dockerfile.dapper
+- Check what is latest [buildroot LTS version](https://buildroot.org/download.html) and update BUILDROOT_VERSION value in Dockerfile.dapper
+  (amd64 and arm64 are built with BUILDROOT_VERSION, riscv64 and loong64 with BUILDROOT_VERSION_NEW_ARCHS)
 - Re-configure (needed to handle updated/changed packages):
 ```bash
 make config
