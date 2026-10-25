@@ -20,5 +20,10 @@ chmod 755 dist/publish.sh
 if [ "${ARCH}" = "amd64" ]; then
     echo "gh release view ${RELEASE_VERSION} --repo ${REPO} >/dev/null 2>&1 || gh release create ${RELEASE_VERSION} --repo ${REPO} --target \${GITHUB_SHA:-master} --title ${RELEASE_VERSION} --notes '' --prerelease" >> dist/publish.sh
 fi
-echo "gh release upload ${RELEASE_VERSION} --repo ${REPO} --clobber ./dist/artifacts/os-initrd-base-${ARCH}.tar.gz" >> dist/publish.sh
-echo "gh release upload ${RELEASE_VERSION} --repo ${REPO} --clobber ./dist/build_${ARCH}.log" >> dist/publish.sh
+
+# Assets which already exist in the release are left untouched, so a re-run only adds missing architectures
+echo "existing=\$(gh release view ${RELEASE_VERSION} --repo ${REPO} --json assets --jq '.assets[].name')" >> dist/publish.sh
+for path in ./dist/artifacts/os-initrd-base-${ARCH}.tar.gz ./dist/build_${ARCH}.log; do
+    f=$(basename ${path})
+    echo "if echo \"\${existing}\" | grep -qx '${f}'; then echo '${f} already exists in ${RELEASE_VERSION}, skipping'; else gh release upload ${RELEASE_VERSION} --repo ${REPO} ${path}; fi" >> dist/publish.sh
+done
