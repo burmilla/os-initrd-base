@@ -19,6 +19,15 @@ cp dist/artifacts/buildroot-config-static config/amd64/buildroot-config-static
 ARCH=amd64 RELEASE_VERSION=yyyy.mm.dd-test make release
 ```
 
+## Updating the root CA bundle
+`assets/ca-certificates.crt` is the system-wide CA bundle of BurmillaOS (`/etc/ssl/certs/ca-certificates.crt`,
+also bind mounted into the system containers). It is generated from Mozilla's `certdata.txt` and contains only
+the roots Mozilla trusts for TLS server authentication. To update it, pick the latest NSS release tag from
+https://github.com/nss-dev/nss/tags and run:
+```bash
+assets/update-ca-certificates.py NSS_3_131_1_RTM
+```
+
 ## Contact
 For bugs, questions, comments, corrections, suggestions, etc., open an issue in
  [burmilla/os](//github.com/burmilla/os/issues) with a title starting with `[os-initrd-base] `.
